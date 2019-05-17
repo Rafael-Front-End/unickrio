@@ -1,0 +1,23 @@
+/*
+Theme Name: UnickRio
+Author: Rafael Guimarães Barbosa
+Description: 
+Version: 1.0  
+Tags: 
+Text Domain: zflag 
+ 
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/ 
+
+html{
+	margin-top:0 !important;
+
+}
+
+
+.faq-area .ready-btn{
+    border-color: #3EC1D5;
+    background: #3EC1D5;
+    color: #fff;
+}
