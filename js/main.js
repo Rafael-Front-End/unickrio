@@ -57,7 +57,7 @@
     directionNav: true,
     controlNavThumbs: false,
     pauseOnHover: true,
-    manualAdvance: false,
+    manualAdvance: true,
   });
 
   /*----------------------------

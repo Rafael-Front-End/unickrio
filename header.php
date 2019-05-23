@@ -53,9 +53,9 @@ $fontes_config = $_SESSION['fontes_config'];
     <!-- Responsive Stylesheet File -->
     <link href="<?php bloginfo( 'template_directory' ); ?>/css/responsive.css" rel="stylesheet">
 
-    <link href="<?php echo bloginfo('stylesheet_url'); ?>" type="text/css" media="all" rel="stylesheet" />
+    <link href="<?php echo bloginfo('stylesheet_url'); ?>?version=1.0.2" type="text/css" media="all" rel="stylesheet" />
     <link rel="shortcut icon" href="<?php bloginfo('template_directory')?>/img/favicon.png" />
-
+ 
 
       
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -66,7 +66,7 @@ $fontes_config = $_SESSION['fontes_config'];
     <![endif]-->
     
 </head> 
-
+ 
 <body data-spy="scroll" data-target="#navbar-example">
 
 
@@ -103,11 +103,12 @@ $fontes_config = $_SESSION['fontes_config'];
                     <span class="icon-bar"></span>
                   </button>
                 <!-- Brand -->
-                <a class="navbar-brand page-scroll sticky-logo" href="index.html">
-                  <h1><span>e</span>Business</h1>
+                  <a class="navbar-brand page-scroll sticky-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>/" class='logo_site'>
+                    <img class="img-responsive" alt="<?php echo( get_bloginfo( 'title' ) ); ?>"src="<?php echo( get_header_image() ); ?>">
+                  </a>
                   <!-- Uncomment below if you prefer to use an image logo -->
                   <!-- <img src="img/logo.png" alt="" title=""> -->
-                </a>
+
               </div>
  
               <!-- Collect the nav links, forms, and other content for toggling -->

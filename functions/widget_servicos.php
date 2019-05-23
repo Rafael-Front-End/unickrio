@@ -6,13 +6,14 @@ class zflag_servicos extends WP_Widget
 {
     function __construct()
     {
-        parent::__construct("zflag_servicos", "Serviços", array('description' => "Exibe o bloco de serviços"));
+        parent::__construct("zflag_servicos", "Zflag Serviços", array('description' => "Exibe o bloco de serviços"));
     }
 
   public function widget($args, $instance)
   {
-        echo $args[" "];
-     
+        echo $args["before_widget"];
+
+        $title = !empty( $instance['title'] ) ? $instance['title'] : '';
         if(get_option('tema_zflag_servicos')){
           $tema_zflag_servicos = json_decode(get_option('tema_zflag_servicos'));
           $tema_zflag_servicos = (array) $tema_zflag_servicos;
@@ -53,13 +54,13 @@ class zflag_servicos extends WP_Widget
           '<!-- Start Service area -->
         <div id="services" class="services-area area-padding">
           <div class="container">
-            <!-- div class="row">
+            <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="section-headline services-head text-center">
-                  <h2></h2>
+                  <h2>'.$title.'</h2>
                 </div>
               </div>
-            </div  -->
+            </div>
             <div class="row text-center">
               <div class="services-contents">
                 '.$html_servicos.'
@@ -74,16 +75,25 @@ class zflag_servicos extends WP_Widget
 
     echo $args["after_widget"];
   }
- 
+  
   public function form($instance)
   {
+
+    $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '' ) );
+    $title = sanitize_text_field( $instance['title'] );
+    ?>
+    <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+    <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+    
+    <?php
+
     echo 'As configurações estão presentes no menu "Configurações do tema" -> "Serviços", é necessario esta com o tema zflag instalado no wordpress';
   }
 
   public function update($new_instance, $old_instance)
   {
-    $instance = array();
-
+    $instance = $old_instance;
+    $instance['title'] = sanitize_text_field( $new_instance['title'] );
     return $instance;
   }
 }

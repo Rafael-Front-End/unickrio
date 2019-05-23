@@ -6,12 +6,13 @@ class zflag_planos extends WP_Widget
 {
     function __construct()
     {
-        parent::__construct("zflag_planos", "Pacotes/Planos", array('description' => "Exibe o bloco de serviços"));
+        parent::__construct("zflag_planos", "Zflag Pacotes/Planos", array('description' => "Exibe o bloco de serviços"));
     }
 
   public function widget($args, $instance)
   {
-        echo $args[" "];
+        echo $args["before_widget"];
+
      
          if(get_option('tema_zflag_planos')){
             $tema_zflag_planos = json_decode(get_option('tema_zflag_planos'));
@@ -24,11 +25,11 @@ class zflag_planos extends WP_Widget
               $titulo = $value['titulo'];
               $texto = stripslashes($value['texto']);
               $link = $value['link'];
-              $li_menu .=    '<li class="active">
+              $li_menu .=    '<li class="'.($contador_de_post == 1 ? 'active' : '').'">
                         <a href="#p-view-'.$contador_de_post.'" role="tab" data-toggle="tab">'.$titulo.'</a>
                       </li>';
               $html_planos .='
-                <div class="tab-pane active" id="p-view-'.$contador_de_post.'">
+                <div class="tab-pane '.($contador_de_post == 1 ? 'active' : '').'" id="p-view-'.$contador_de_post.'">
                   <div class="tab-inner">
                     <div class="event-content head-team">
                       <h4>'.$titulo.'</h4>
@@ -37,14 +38,14 @@ class zflag_planos extends WP_Widget
                     </div>
                   </div>
                 </div>
-                ';
+                '; 
             }
 
            
 
             $html = 
             '<!-- Faq area start -->
-          <div class="faq-area area-padding">
+          <div id="faq-area" class="faq-area area-padding">
             <div class="container">
               <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">

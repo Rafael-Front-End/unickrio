@@ -6,43 +6,38 @@
  * @subpackage Twenty_Fifteen
  * @since Twenty Fifteen 1.0
  */
-    
-    echo '<header id="pagina_cabecalho"><div class="container"><div class="col-md-12">';
-        the_title( '<h1 id="titulo_pagina">', '</h1>' );
-    echo '</div></div></header>';
+
+ if ( has_post_thumbnail() ) {
+        $the_post_thumbnail = "background-image: url(".get_the_post_thumbnail_url()."); ";
+    } else { 
+        $the_post_thumbnail = "";
+    } 
+
 ?>
- <main id="main" class="site-main container" role="main">
-    <div id="tema2">
-        <section class="conteudo_post">
-
-
-            <div id="texto_post">
-                <?php  the_content(); ?>
+ <!-- Start Bottom Header -->
+  <div class="header-bg page-area" style="<?php echo $the_post_thumbnail; ?>">
+    <div class="home-overly"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="slider-content text-center">
+            <div class="header-bottom">
+              <div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
+               <?php the_title( '<h1 id="titulo_pagina">', '</h1>' ); ?>
+              </div>
+              <div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
+                <h2 class="title3"></h2>
+              </div>
             </div>
-            
-            <?php 
-                // If comments are open or we have at least one comment, load up the comment template.
-                // if ( comments_open() || get_comments_number() ) :
-                //     comments_template();
-                // endif;
-            ?> 
-        </section>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <!-- END Header -->
 
-
-            
-</main><!-- #main -->
- <div class="col-md-12 social_footer">
-    <h3>Também estamos aqui</h3>
-    <p>Acompanhe nosso trabalho em outras plataformas</p>
-    <div id="rodape_social_icons" class="social-links">
-      <a target="_blank" href="https://www.facebook.com/designeficaz/"><img class="img-responsive" src="http://localhost/wordpress/wp-content/themes/designeficaz/imagens/espera/redes-sociais-facebook.jpg"></a>
-      
-      <a target="_blank" href="https://www.instagram.com/designeficaz/"><img class="img-responsive" src="http://localhost/wordpress/wp-content/themes/designeficaz/imagens/espera/redes-sociais-instagram.jpg"></a>
-      
-      <a target="_blank" href="https://www.behance.net/danieldesouz4"><img class="img-responsive" src="http://localhost/wordpress/wp-content/themes/designeficaz/imagens/espera/redes-sociais-behance.jpg"></a>
-      <a target="_blank" href="https://www.colab55.com/@danieldesouz4"><img class="img-responsive" src="http://localhost/wordpress/wp-content/themes/designeficaz/imagens/espera/redes-sociais-colab55.jpg"></a>
-      
-      
+    <div class="blog-page area-padding">
+        <div class="container">
+                <?php  the_content(); ?>
+        </div>
     </div>
-</div>

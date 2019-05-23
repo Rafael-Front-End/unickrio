@@ -11,7 +11,8 @@ class parallaxy extends WP_Widget
 
   public function widget($args, $instance)
   {
-        echo $args[" "];
+        echo $args["before_widget"];
+
        
        // $instance['design']
         $data_slide_to = 0.;

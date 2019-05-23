@@ -3,7 +3,7 @@
  * The sidebar containing the main widget area
  *
  * @package WordPress
- * @subpackage Twenty_Fifteen
+ * @subpackage Twenty_Fifteen 
  * @since Twenty Fifteen 1.0
  */ 
 
@@ -13,9 +13,12 @@
 
 
 			<?php if ( is_active_sidebar( 'barra_lateral' ) ) : ?>
-				<div class="sidebar col-md-4">	 
-					<?php dynamic_sidebar( 'barra_lateral' ); ?>
-			    </div>
+				
+			    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          			<div class="page-head-blog">
+           				<?php dynamic_sidebar( 'barra_lateral' ); ?>
+          			</div>
+        		</div>
 			<?php endif; ?>
 
 

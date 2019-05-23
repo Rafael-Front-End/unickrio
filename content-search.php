@@ -33,13 +33,36 @@
 
     
     $html_categoria_cultura .='
-        <div class="bloco_post esquerda col-md-6">
-          '.$html_link_cat.'
-          <a href="'.$url.'" class="thumbnail_post" style="background-image:url('.$img.');"></a>
-          <span style="'.$cor_txt.$fontes.'">'.$titulo.'</span>
-          <p>Por <a href="'.$autor_link.'" class="author">'.$autor.'</a> | '.$data_post.'</p>
-        </div>
-      ';
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="single-blog">
+                          <div class="single-blog-img">
+                            <a href="blog-details.html">
+                                <img src="'.$img.'" alt="">
+                              </a>
+                          </div>
+                          <div class="blog-meta">
+                            <span class="date-type">
+                                <i class="fa fa-calendar"></i>'.$data_post.'
+                              </span>
+                          </div>
+                          <div class="blog-text">
+                            <h4>
+                                <a href="#">'.$titulo.'</a>
+                              </h4>
+                            <p>
+                             '.$resumo.'
+                            </p>
+                          </div>
+                          <span>
+                              <a href="'.$url.'" class="ready-btn">Leia mais</a>
+                            </span>
+                        </div>
+                      </div>
+                      <!-- End single blog -->
+                  ';
+
+
+
   	echo $html_categoria_cultura;
 ?>
 

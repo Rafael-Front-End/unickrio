@@ -5,14 +5,42 @@ Template Name: Blog
  
 get_header(); 
 
-    echo '<header id="pagina_cabecalho"><div class="container"><div class="col-md-12">';
-        the_title( '<h1 id="titulo_pagina">', '</h1>' );
-    echo '</div></div></header>';
 ?> 
-<main id="pagina_categoria" class="site-main container" role="main">
-    <div class="col-md-8">
-        <div class="tipo_3 destaque_categorias">
-            <?php 
+
+<!-- Start Bottom Header -->
+  <div class="header-bg page-area">
+    <div class="home-overly"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="slider-content text-center">
+            <div class="header-bottom">
+              <div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
+                <h1 class="title2"><?php  the_title( '<h1 id="titulo_pagina">', '</h1>' ); ?></h1>
+              </div>
+              <div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
+                <h2 class="title3"></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END Header -->
+
+
+ <div class="blog-page area-padding">
+    <div class="container">
+      <div class="row">
+
+        <!-- Start single blog -->
+        <div class="<?php echo (( is_active_sidebar( 'barra_lateral' ) ) ? 'col-md-8 col-sm-8' : 'col-md-12'); ?> col-xs-12">
+          <div class="row">
+
+
+
+             <?php 
             // Check if there are any posts to display
             $wpb_all_query = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1));
             
@@ -42,15 +70,34 @@ get_header();
                 $autor      = get_the_author();
                 $autor_link      = get_site_url()."/author/".$autor;
                 $id_post    = $post->ID;
-                $html_link_cat = "<a class='titlecat' href='{$cat_link}'>{$cat_name}</a>";
 
                 $html_categoria_cultura .='
-                    <div class="bloco_post esquerda col-md-6">
-                      '.$html_link_cat.'
-                      <a href="'.$url.'" class="thumbnail_post" style="background-image:url('.$img.');"></a>
-                      <span style="'.$cor_txt.$fontes.'">'.$titulo.'</span>
-                      <p>Por <a href="'.$autor_link.'" class="author">'.$autor.'</a> | '.$data_post.'</p>
-                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="single-blog">
+                          <div class="single-blog-img">
+                            <a href="blog-details.html">
+                                <img src="'.$img.'" alt="">
+                              </a>
+                          </div>
+                          <div class="blog-meta">
+                            <span class="date-type">
+                                <i class="fa fa-calendar"></i>'.$data_post.'
+                              </span>
+                          </div>
+                          <div class="blog-text">
+                            <h4>
+                                <a href="#">'.$titulo.'</a>
+                              </h4>
+                            <p>
+                             '.$resumo.'
+                            </p>
+                          </div>
+                          <span>
+                              <a href="'.$url.'" class="ready-btn">Leia mais</a>
+                            </span>
+                        </div>
+                      </div>
+                      <!-- End single blog -->
                   ';
 
                 wp_reset_postdata();
@@ -58,9 +105,9 @@ get_header();
              echo $html_categoria_cultura;
 
                 if (function_exists("wp_bs_pagination")):
-                
-                         //wp_bs_pagination($the_query->max_num_pages);
-                    echo "<div class='clearfix'></div><div class='col-md-12'>";
+                    //wp_bs_pagination($the_query->max_num_pages);
+                    echo "<!-- End single blog -->
+                        <div class=\"blog-pagination\">";
                          wp_bs_pagination();
                     echo "</div>";
                 endif;
@@ -70,21 +117,18 @@ get_header();
                 <p>Não existem posts para esta categoria!</p>
             <?php endif; ?>
 
+
+           
+          </div>
         </div>
+
+         <?php get_sidebar(); ?>
+        <!-- End left sidebar -->
+
+      </div>
     </div>
-    <?php get_sidebar(); ?>
-</main>
- <div class="col-md-12 social_footer">
-    <h3>Também estamos aqui</h3>
-    <p>Acompanhe nosso trabalho em outras plataformas</p>
-    <div id="rodape_social_icons" class="social-links">
-      <a target="_blank" href="https://www.facebook.com/designeficaz/"><img class="img-responsive" src="http://localhost/wordpress/wp-content/themes/designeficaz/imagens/espera/redes-sociais-facebook.jpg"></a>
-      
-      <a target="_blank" href="https://www.instagram.com/designeficaz/"><img class="img-responsive" src="http://localhost/wordpress/wp-content/themes/designeficaz/imagens/espera/redes-sociais-instagram.jpg"></a>
-      
-      <a target="_blank" href="https://www.behance.net/danieldesouz4"><img class="img-responsive" src="http://localhost/wordpress/wp-content/themes/designeficaz/imagens/espera/redes-sociais-behance.jpg"></a>
-      <a target="_blank" href="https://www.colab55.com/@danieldesouz4"><img class="img-responsive" src="http://localhost/wordpress/wp-content/themes/designeficaz/imagens/espera/redes-sociais-colab55.jpg"></a>
-      
-      
-    </div>
+  </div>
+
+
+
 <?php get_footer(); ?>

@@ -95,6 +95,9 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			foreach ( $atts as $attr => $value ) {
 				if ( ! empty( $value ) ) {
 					$value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+					if(preg_match("/^#.*/i", $value) && !is_home()){
+						$value = ( 'href' === $attr ) ? get_site_url().esc_url( $value ) : esc_attr( $value );
+					}
 					$attributes .= ' ' . $attr . '="' . $value . '"';
 				}
 			}
@@ -111,7 +114,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			if ( ! empty( $item->attr_title ) )
 				$item_output .= '<a'. $attributes .'><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
 			else
-				$item_output .= '<a'. $attributes .'>';
+				$item_output .= '<a class="page-scroll" '. $attributes .'>';
 
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 			$item_output .= ( $args->has_children && 0 === $depth ) ? ' <span class="caret"></span></a>' : '</a>';

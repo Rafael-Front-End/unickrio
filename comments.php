@@ -20,39 +20,38 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
+  <div class="clear"></div>
+  <div class="single-post-comments">
+    <div class="comments-area">
+      <?php if ( have_comments() ) : ?>
+        <div class="comments-heading">
+          <h3>
+            <?php
+              printf( _nx( '1 Comentário', '%1$s Comentários', get_comments_number(), 'comments title', 'twentyfifteen' ),
+                number_format_i18n( get_comments_number() ), get_the_title() );
+            ?>
+          </h3>
+        </div>
+        <div class="comments-list">
+          <?php twentyfifteen_comment_nav(); ?>
+          <?php
+            wp_list_comments( array(
+              'style'       => 'ul',
+              'short_ping'  => true,
+              'avatar_size' => 56,
+            ) );
+          ?>
+          <?php twentyfifteen_comment_nav(); ?>
+        </div>
+      <?php endif; ?>
+    </div>
+    <div class="comment-respond">
+      <h3 class="comment-reply-title">Leave a Reply </h3>
+      <span class="email-notes">Your email address will not be published. Required fields are marked *</span>
 
-	<?php if ( have_comments() ) : ?>
-		<h2 class="comments-title">
-			<?php
-				printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'twentyfifteen' ),
-					number_format_i18n( get_comments_number() ), get_the_title() );
-			?>
-		</h2>
+      <?php comment_form(); ?>
 
-		<?php twentyfifteen_comment_nav(); ?>
-
-		<ol class="comment-list">
-			<?php
-				wp_list_comments( array(
-					'style'       => 'ol',
-					'short_ping'  => true,
-					'avatar_size' => 56,
-				) );
-			?>
-		</ol><!-- .comment-list -->
-
-		<?php twentyfifteen_comment_nav(); ?>
-
-	<?php endif; // have_comments() ?>
-
-	<?php
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
-	?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'twentyfifteen' ); ?></p>
-	<?php endif; ?>
-
-	<?php comment_form(); ?>
-
-</div><!-- .comments-area -->
+     
+    </div>
+  </div>
+  <!-- single-blog end -->

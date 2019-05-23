@@ -21,3 +21,111 @@ html{
     background: #3EC1D5;
     color: #fff;
 }
+
+#home .about-area{
+	font-weight: bold;
+}
+
+
+
+
+ .contact-form input[type=button], .contact-form input[type=reset], .contact-form input[type=submit] {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    color: #444;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 8px;
+    padding: 12px 30px;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+    border-radius: 30px;
+}
+
+
+.contact-form input[type=button]:hover, .contact-form input[type=reset]:hover, .contact-form input[type=submit]:hover {
+    color: #fff;
+    border: 1px solid #3EC1D5;
+    background: #3EC1D5;
+}
+
+.logo_site img{
+    margin:6px ;
+}
+
+.slider-content {
+    padding: 90px 60px;
+}
+
+footer  a.sticky-logo{
+    width: 100%;
+    height: 90px;
+}
+
+footer .footer-contacts .fa{
+    border: 1px solid #444;
+    color: #444;
+    font-size: 16px;
+    height: 40px;
+    line-height: 38px;
+    margin-right: 5px;
+    text-align: center;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.slide_video{
+        height: 350px;
+}
+
+.sticky-logo img{
+    max-width: 176px;
+
+}
+
+.video_slide{
+    max-width: 640px;
+    margin:0 auto;
+}
+
+@media (max-width: 1000px) {
+    .slider-content {
+        padding: 0;
+    }
+    .slide_video{
+        height: 250px;
+    }
+
+    .video_slide{
+        max-width: 400px;
+        margin:0 auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .slide_video{
+        height: 120px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .layer-1-2 {
+        margin: 0;
+    }
+
+    .video_slide{
+        max-width: 180px;
+        margin:0 auto;
+    }
+
+    .slider-content a.ready-btn{
+        font-size:10px;
+    }
+
+    .logo_site img {
+        margin: 6px;
+        max-width: 190px;
+    }
+}
